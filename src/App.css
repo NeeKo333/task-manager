@@ -1,0 +1,15 @@
+.App {
+  height: 100vh;
+}
+
+.todoApp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.todoApp h1 {
+  align-items: center;
+}

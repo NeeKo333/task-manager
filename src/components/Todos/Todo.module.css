@@ -1,0 +1,24 @@
+.todoCard {
+  width: 100%;
+  margin: 20px 40px;
+  padding: 10px 20px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  background-color: aliceblue;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.number {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+}
+
+.todoIcon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: green;
+}
