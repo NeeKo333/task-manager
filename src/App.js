@@ -11,7 +11,6 @@ function App() {
 
   function delTodo(e) {
     const target = e.target;
-    console.log(typeof target.id);
     const newArr = todoArr.filter((_, i) => i !== +target.id);
     setTodoArr(newArr);
   }
