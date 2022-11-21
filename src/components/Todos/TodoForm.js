@@ -17,7 +17,7 @@ function TodoForm({ funcAddNewTodo }) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          funcAddNewTodo(inputValue);
+          if (inputValue) funcAddNewTodo(inputValue);
           setInputValue("");
         }}
       >

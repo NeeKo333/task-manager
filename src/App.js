@@ -2,6 +2,7 @@ import "./App.css";
 import TodoForm from "./components/Todos/TodoForm";
 import TodoList from "./components/Todos/TodoList";
 import Buttons from "./components/UI/Buttons";
+import { ImBin, ImBriefcase } from "react-icons/im";
 import { useState } from "react";
 function App() {
   let [todoArr, setTodoArr] = useState([]);
@@ -29,15 +30,42 @@ function App() {
   function delAllTodos() {
     setTodoArr([]);
   }
+  function updateArr() {
+    const newArr = [...todoArr];
+    setTodoArr(newArr);
+  }
+
+  let endedElLength = todoArr.filter((el) => el.ended).length;
 
   return (
     <div className="App">
-      <div className="todoApp">
-        <h1>Todo App by React</h1>
-        <TodoForm funcAddNewTodo={addTodo}></TodoForm>
-        <Buttons changeTodosFn={delEndedTodos}>Delete ended todos!</Buttons>
-        <Buttons changeTodosFn={delAllTodos}>Delete all todos!</Buttons>
-        <TodoList funcDelTodo={delTodo} array={todoArr}></TodoList>
+      <div className="wrapper">
+        <div className="todoApp">
+          <h2>Tasks</h2>
+          <TodoForm funcAddNewTodo={addTodo}></TodoForm>
+          <div className="todoButtons">
+            <Buttons changeTodosFn={delEndedTodos}>
+              <ImBriefcase></ImBriefcase>
+            </Buttons>
+            <Buttons changeTodosFn={delAllTodos}>
+              <ImBin></ImBin>
+            </Buttons>
+          </div>
+          <TodoList
+            funcDelTodo={delTodo}
+            array={todoArr}
+            updateFn={updateArr}
+          ></TodoList>
+          {todoArr.length > 0 ? (
+            endedElLength > 0 ? (
+              <h4 className="colored">{endedElLength} task ended!</h4>
+            ) : (
+              <h4 className="colored">No ended tasks!</h4>
+            )
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );
