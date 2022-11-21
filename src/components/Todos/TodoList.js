@@ -5,14 +5,12 @@ function TodoList({ array, funcDelTodo }) {
   return (
     <div
       className={styles.todoList}
-      onClick={(e) => {
+      onDoubleClick={(e) => {
         funcDelTodo(e);
       }}
     >
       {array.length > 0 ? (
-        array.map((el, index) => (
-          <Todo todoText={el} key={index} id={index}></Todo>
-        ))
+        array.map((el, index) => <Todo todoObj={el} key={el.id}></Todo>)
       ) : (
         <h3>To do List is empty!</h3>
       )}

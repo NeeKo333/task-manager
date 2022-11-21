@@ -1,10 +1,31 @@
+import { useState } from "react";
 import { RiTodoFill } from "react-icons/ri";
+import { MdDoneAll } from "react-icons/md";
 import styles from "./Todo.module.css";
-function Todo({ todoText, id }) {
+function Todo({ todoObj }) {
+  const [todoState, setTodoState] = useState(todoObj);
+  const [classTodo, setClassTodo] = useState(styles.todoCard);
+  const [doneIconClass, setDoneIconClass] = useState(styles.todoDone);
   return (
-    <h3 id={id} className={styles.todoCard}>
+    <h3 id={todoObj.id} className={classTodo}>
       <RiTodoFill className={styles.todoIcon}></RiTodoFill>
-      {todoText}
+      <MdDoneAll
+        className={doneIconClass}
+        onClick={(e) => {
+          if (!todoState.ended) {
+            setDoneIconClass(styles.todoDoneEnd);
+            todoState.ended = true;
+            setClassTodo(styles.todoCardEnded);
+          } else {
+            setDoneIconClass(styles.todoDone);
+            todoState.ended = false;
+            setClassTodo(styles.todoCard);
+          }
+
+          setTodoState(todoState);
+        }}
+      ></MdDoneAll>
+      {todoObj.Text}
     </h3>
   );
 }

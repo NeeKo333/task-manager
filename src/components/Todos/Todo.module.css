@@ -9,6 +9,18 @@
   cursor: pointer;
   position: relative;
 }
+.todoCardEnded {
+  width: 100%;
+  margin: 20px 40px;
+  padding: 10px 20px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  background-color: grey;
+  opacity: 0.4;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
 
 .number {
   position: absolute;
@@ -20,5 +32,19 @@
   position: absolute;
   top: 5px;
   left: 5px;
+  color: green;
+}
+
+.todoDone {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 25px;
+}
+.todoDoneEnd {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 25px;
   color: green;
 }
