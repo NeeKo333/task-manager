@@ -2,8 +2,7 @@ import { useState } from "react";
 import { RiTodoFill } from "react-icons/ri";
 import { MdDoneAll } from "react-icons/md";
 import styles from "./Todo.module.css";
-function Todo({ todoObj, updateArrFn }) {
-  const [todoState, setTodoState] = useState(todoObj);
+function Todo({ todoObj, funcSetTodoAsEnded }) {
   const [classTodo, setClassTodo] = useState(styles.todoCard);
   const [doneIconClass, setDoneIconClass] = useState(styles.todoDone);
   return (
@@ -12,18 +11,14 @@ function Todo({ todoObj, updateArrFn }) {
       <MdDoneAll
         className={doneIconClass}
         onClick={() => {
-          if (!todoState.ended) {
+          if (!todoObj.ended) {
             setDoneIconClass(styles.todoDoneEnd);
-            todoState.ended = true;
             setClassTodo(styles.todoCardEnded);
           } else {
             setDoneIconClass(styles.todoDone);
-            todoState.ended = false;
             setClassTodo(styles.todoCard);
           }
-
-          setTodoState(todoState);
-          updateArrFn();
+          funcSetTodoAsEnded(todoObj.id);
         }}
       ></MdDoneAll>
       {todoObj.Text}

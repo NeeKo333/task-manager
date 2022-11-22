@@ -22,6 +22,19 @@ function App() {
     const newArr = todoArr.filter((el) => el.id !== +target.id);
     setTodoArr(newArr);
   }
+  function setTodoAsEnded(ident) {
+    const newArr = todoArr.map((el) => {
+      if (el.id === ident) {
+        if (!el.ended) {
+          el.ended = true;
+        } else {
+          el.ended = false;
+        }
+      }
+      return el;
+    });
+    setTodoArr(newArr);
+  }
 
   function delEndedTodos() {
     const newArr = todoArr.filter((el) => el.ended === false);
@@ -29,10 +42,6 @@ function App() {
   }
   function delAllTodos() {
     setTodoArr([]);
-  }
-  function updateArr() {
-    const newArr = [...todoArr];
-    setTodoArr(newArr);
   }
 
   let endedElLength = todoArr.filter((el) => el.ended).length;
@@ -53,8 +62,8 @@ function App() {
           </div>
           <TodoList
             funcDelTodo={delTodo}
+            funcSetTodoAsEnded={setTodoAsEnded}
             array={todoArr}
-            updateFn={updateArr}
           ></TodoList>
           {todoArr.length > 0 ? (
             endedElLength > 0 ? (
