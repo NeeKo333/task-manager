@@ -52,14 +52,16 @@ function App() {
         <div className="todoApp">
           <h2>Tasks</h2>
           <TodoForm funcAddNewTodo={addTodo}></TodoForm>
-          <div className="todoButtons">
-            <Buttons changeTodosFn={delEndedTodos}>
-              <ImBriefcase></ImBriefcase>
-            </Buttons>
-            <Buttons changeTodosFn={delAllTodos}>
-              <ImBin></ImBin>
-            </Buttons>
-          </div>
+          {todoArr.length > 0 && (
+            <div className="todoButtons">
+              <Buttons changeTodosFn={delEndedTodos}>
+                <ImBriefcase></ImBriefcase>
+              </Buttons>
+              <Buttons changeTodosFn={delAllTodos}>
+                <ImBin></ImBin>
+              </Buttons>
+            </div>
+          )}
           <TodoList
             funcDelTodo={delTodo}
             funcSetTodoAsEnded={setTodoAsEnded}
