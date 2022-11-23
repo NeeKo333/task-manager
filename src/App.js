@@ -54,19 +54,24 @@ function App() {
           <TodoForm funcAddNewTodo={addTodo}></TodoForm>
           {todoArr.length > 0 && (
             <div className="todoButtons">
-              <Buttons changeTodosFn={delEndedTodos}>
+              <Buttons
+                title="Delete ended tasks!"
+                changeTodosFn={delEndedTodos}
+              >
                 <ImBriefcase></ImBriefcase>
               </Buttons>
-              <Buttons changeTodosFn={delAllTodos}>
+              <Buttons title="Delete all tasks!" changeTodosFn={delAllTodos}>
                 <ImBin></ImBin>
               </Buttons>
             </div>
           )}
+
           <TodoList
             funcDelTodo={delTodo}
             funcSetTodoAsEnded={setTodoAsEnded}
             array={todoArr}
           ></TodoList>
+
           {todoArr.length > 0 ? (
             endedElLength > 0 ? (
               <h4 className="colored">{endedElLength} task ended!</h4>

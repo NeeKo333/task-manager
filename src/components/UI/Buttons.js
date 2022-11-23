@@ -1,7 +1,9 @@
-function Buttons({ changeTodosFn, children }) {
+function Buttons({ changeTodosFn, children, title }) {
   return (
     <>
-      <button onClick={changeTodosFn}>{children}</button>
+      <button title={title} onClick={changeTodosFn}>
+        {children}
+      </button>
     </>
   );
 }
